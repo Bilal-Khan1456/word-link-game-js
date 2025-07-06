@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Chain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&family=Paytone+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Start Screen -->
+  <section id="start-screen" class="screen">
+    <h1>Word Chain</h1>
+    <p class="game-description">Chain words together where each new word must start with the last letter of the previous word!</p>
+    <div class="button-container">
+      <button id="player-vs-computer-btn" class="btn primary-btn">
+        <span class="btn-icon">👤</span>
+        <span class="btn-text">Player vs Bilal</span>
+      </button>
+      <button id="player-vs-player-btn" class="btn primary-btn">
+        <span class="btn-icon">👥</span>
+        <span class="btn-text">Player vs Player</span>
+      </button>
+      <button id="leaderboard-btn" class="btn secondary-btn">
+        <span class="btn-icon">🏆</span>
+        <span class="btn-text">Leaderboard</span>
+      </button>
+    </div>
+    <div class="game-rules">
+      <h3>Rules:</h3>
+      <ul>
+        <li>Each player takes turns entering words</li>
+        <li>Each new word must start with the last letter of the previous word</li>
+        <li>Words cannot be repeated</li>
+        <li>Score points equal to the length of your word</li>
+        <li>Words with 6+ letters get double points!</li>
+        <li>You have 15 seconds to enter each word</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Player Name Input Screen (Hidden by Default) -->
+  <section id="player-name-screen" class="screen hidden">
+    <h2>Enter Player Names</h2>
+    <div class="input-group">
+      <label for="player1-name">Player 1 Name:</label>
+      <input type="text" id="player1-name" placeholder="Enter Player 1 name..." required>
+    </div>
+    
+    <div class="input-group">
+      <label for="player2-name">Player 2 Name:</label>
+      <input type="text" id="player2-name" placeholder="Enter Player 2 name..." required>
+    </div>
+    <div class="button-container">
+      <button id="start-game-btn" class="btn primary-btn">Start Game</button>
+      <button id="back-btn" class="btn secondary-btn">Back</button>
+    </div>
+  </section>
+
+  <!-- Game Screen (Hidden by Default) - MODIFIED WITH TWO COLUMNS -->
+  <section id="game-container" class="screen game-screen hidden">
+    <h1>Word Link Game</h1>
+    
+    <div class="game-layout">
+      <!-- Left Column: Main Game -->
+      <div class="game-main-column">
+        <div id="game-status" class="status">Start by entering a word.</div>
+        <div id="timer" class="timer-container">
+          <div class="timer-bar">
+            <div id="timer-progress"></div>
+          </div>
+          <div class="timer-text">Time Left: <span id="time-remaining">15</span> seconds</div>
+        </div>
+        <div id="player-turn" class="status"></div>
+        <div id="score-display" class="score">Score: 0</div>
+
+        <div class="input-container">
+          <input type="text" id="word-input" placeholder="Enter a word...">
+          <button id="submit-btn" class="btn primary-btn">Submit</button>
+        </div>
+
+        <div class="controls">
+          <button id="pause-btn" class="btn secondary-btn">Pause</button>
+          <button id="game-over-btn" class="btn danger-btn">End Game</button>
+        </div>
+      </div>
+      
+      <!-- Right Column: Recent Words -->
+      <div class="words-column">
+        <div class="word-list">
+          <h2>Recent Words:</h2>
+          <ul id="used-words"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Game Over Screen (Hidden by Default) -->
+  <section id="game-over-screen" class="screen hidden">
+    <h1>Game Over</h1>
+    <div id="final-score" class="final-score"></div>
+    <div id="winner-display" class="winner"></div>
+    <div class="confetti-container" id="confetti-container"></div>
+    <div class="button-container">
+      <button id="restart-game-btn" class="btn primary-btn">Play Again</button>
+      <button id="back-to-menu-btn-end" class="btn secondary-btn">Back to Menu</button>
+    </div>
+  </section>
+
+  <!-- Leaderboard Screen (Hidden by Default) -->
+  <section id="leaderboard-screen" class="screen hidden">
+    <h1>Leaderboard</h1>
+    <h2 id="leaderboard-title">Player vs M.Bilal Leaderboard</h2>
+    <button id="leaderboard-toggle" class="btn toggle-btn" data-mode="computer">Show Player vs Player</button>
+    <div class="leaderboard-container">
+      <ul id="leaderboard-list"></ul>
+    </div>
+    <button id="back-to-menu-btn" class="btn secondary-btn">Back to Menu</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
